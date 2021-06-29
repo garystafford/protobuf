@@ -7,6 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
+	"google.golang.org/protobuf/reflect/protoreflect"
 	math "math"
 )
 
@@ -128,6 +129,10 @@ type GreetingResponse struct {
 	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
 	XXX_unrecognized     []byte      `json:"-"`
 	XXX_sizecache        int32       `json:"-"`
+}
+
+func (m *GreetingResponse) ProtoReflect() protoreflect.Message {
+	return proto.MessageReflect(m)
 }
 
 func (m *GreetingResponse) Reset()         { *m = GreetingResponse{} }
