@@ -4,6 +4,11 @@
     "title": "greeting/v2/greeting.proto",
     "version": "version not set"
   },
+  "tags": [
+    {
+      "name": "GreetingService"
+    }
+  ],
   "consumes": [
     "application/json"
   ],

@@ -61,7 +61,7 @@ func RegisterGreetingServiceHandlerServer(ctx context.Context, mux *runtime.Serv
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/greeting.v2.GreetingService/Greeting")
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/greeting.v2.GreetingService/Greeting", runtime.WithHTTPPathPattern("/api/greeting"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -123,7 +123,7 @@ func RegisterGreetingServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/greeting.v2.GreetingService/Greeting")
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/greeting.v2.GreetingService/Greeting", runtime.WithHTTPPathPattern("/api/greeting"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
