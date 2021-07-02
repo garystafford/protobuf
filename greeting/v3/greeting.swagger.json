@@ -1,0 +1,137 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "greeting/v3/greeting.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "GreetingService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/greeting": {
+      "get": {
+        "operationId": "GreetingService_Greeting",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v3GreetingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "greeting.id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "greeting.service",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "greeting.message",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "greeting.created",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "greeting.hostname",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "GreetingService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v3Greeting": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string"
+        },
+        "hostname": {
+          "type": "string"
+        }
+      }
+    },
+    "v3GreetingResponse": {
+      "type": "object",
+      "properties": {
+        "greeting": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v3Greeting"
+          }
+        }
+      }
+    }
+  }
+}
